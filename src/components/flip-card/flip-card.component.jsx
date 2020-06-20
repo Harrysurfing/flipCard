@@ -1,15 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import ReactCardFlip from "react-card-flip";
 import "./flip-card.style.css";
-
-const style = {
-	frontcard: {
-		border: "1px solid black",
-		height: "100px",
-		width: "200px",
-		color: "red",
-	},
-};
 
 class FlipCard extends Component {
 	constructor(props) {
@@ -17,8 +8,12 @@ class FlipCard extends Component {
 
 		this.state = {
 			isFlipped: false,
+			height: 0,
+			width: 0,
 		};
 		this.handleClick = this.handleClick.bind(this);
+
+		this.cardFrontRef = createRef();
 	}
 
 	handleClick(e) {
@@ -26,14 +21,29 @@ class FlipCard extends Component {
 		this.setState((prevState) => ({ isFlipped: !prevState.isFlipped }));
 	}
 
+	componentDidMount() {
+		this.setState(
+			{
+				height: this.cardFrontRef.current.offsetHeight - 2,
+				width: this.cardFrontRef.current.offsetWidth - 2,
+			},
+			() => {
+				console.log(this.state.height);
+			}
+		);
+	}
+
 	render() {
 		return (
 			<ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-				<div style={style.frontcard} onMouseOver={this.handleClick}>
-					This is the front of the card.
+				<div onClick={this.handleClick} ref={this.cardFrontRef}>
+					{this.props.cardFront}
 				</div>
-				<div onMouseLeave={this.handleClick} style={style.frontcard}>
-					This is the back of the card.
+				<div
+					onClick={this.handleClick}
+					style={{ height: this.state.height, width: this.state.width }}
+				>
+					{this.props.cardBack}
 				</div>
 			</ReactCardFlip>
 		);

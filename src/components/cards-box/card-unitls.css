@@ -1,0 +1,26 @@
+.card-front {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	max-width: 300px;
+	align-items: flex-start;
+	cursor: pointer;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	padding: 16px;
+}
+
+.card-back {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+	cursor: pointer;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+}
+.card-question {
+	margin-bottom: 8px;
+}

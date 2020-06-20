@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import CardBox from "./components/cards-box/cards-box";
+import SelectionPannel from "./components/selection-pannel/selection-pannel";
+import { getToken, getQuestions } from "./api/api";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [qs, setQs] = useState([]);
+
+	const fetchQuestions = async () => {
+		let r = await getQuestions();
+		setQs(r);
+	};
+
+	// useEffect(() => {
+	// 	fetchQuestions();
+	// }, []);
+
+	console.log(qs);
+
+	return (
+		<div className="App">
+			<SelectionPannel fetchQuestions={fetchQuestions} />
+			<CardBox questions={qs} />
+		</div>
+	);
 }
 
 export default App;
