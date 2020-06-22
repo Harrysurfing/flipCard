@@ -1,0 +1,25 @@
+.welcome-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: cornflowerblue;
+}
+
+.welcome-message {
+	text-transform: capitalize;
+}
+
+.welcome-button {
+	background-color: grey;
+	cursor: pointer;
+	color: white;
+	border-radius: 6px;
+	transition-duration: 0.5s;
+}
+.welcome-button:hover {
+	background-color: lightskyblue;
+	color: black;
+}

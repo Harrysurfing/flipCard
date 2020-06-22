@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./selection-pannel.css";
 import { cat, difficulty } from "./selections";
 
@@ -6,13 +6,8 @@ function SelectionPannel(props) {
 	const [selectedCat, setSelectedCat] = useState();
 	const [selectedDifficulty, setSelectedDifficulty] = useState();
 
-	useEffect(() => {
-		console.log(selectedCat);
-		console.log(selectedDifficulty);
-	}, [selectedCat, selectedDifficulty]);
-
 	return (
-		<div>
+		<div className="selection-pannel">
 			<select name="category" onChange={(e) => setSelectedCat(e.target.value)}>
 				<option value="">Please select a category</option>
 				{cat.map((el) => (

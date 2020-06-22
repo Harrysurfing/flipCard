@@ -1,5 +1,18 @@
+.selection-pannel {
+	width: 100%;
+	height: 32px;
+	background-color: gray;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
 .question-button {
 	cursor: pointer;
-	border: none;
+	background-color: orange;
 	border-radius: 6px;
+	border: 1px solid;
+}
+.question-button:hover {
+	transform: scale(1.2);
 }

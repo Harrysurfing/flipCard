@@ -1,7 +1,7 @@
 import React from "react";
 import FlipCard from "../flip-card/flip-card.component";
 import "./cards-box.css";
-import { data } from "../mock-data";
+
 import {
 	generateAnswers,
 	generateCardFront,

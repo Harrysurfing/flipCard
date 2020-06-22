@@ -16,7 +16,7 @@ const decodeString = (str) => {
 export const generateCardFront = (question, answers) => {
 	const decodedQuestion = decodeString(question);
 	return (
-		<div className="card-front">
+		<div className="card card-front">
 			<span className="card-question">{decodedQuestion}</span>
 			{["A", "B", "C", "D"].map((option, index) => {
 				return (
@@ -31,7 +31,7 @@ export const generateCardFront = (question, answers) => {
 
 export const generateCardBack = (answer) => {
 	return (
-		<div className="card-back">
+		<div className="card card-back">
 			<span>{`Correct answer: ${answer}`}</span>
 		</div>
 	);

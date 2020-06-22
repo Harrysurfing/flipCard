@@ -1,3 +1,7 @@
+.card {
+	background-color: lightseagreen;
+}
+
 .card-front {
 	display: flex;
 	flex-direction: column;

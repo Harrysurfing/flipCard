@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CardBox from "./components/cards-box/cards-box";
 import SelectionPannel from "./components/selection-pannel/selection-pannel";
-import { getToken, getQuestions } from "./api/api";
+import WelcomePage from "./components/welcome-page/welcome-page";
+import { getQuestions } from "./api/api";
+import "./App.css";
 
 function App() {
 	const [qs, setQs] = useState([]);
@@ -12,17 +14,18 @@ function App() {
 		setQs(r);
 	};
 
-	// useEffect(() => {
-	// 	fetchQuestions();
-	// }, []);
-
-	console.log(qs);
-
 	return (
-		<div className="App">
-			<SelectionPannel fetchQuestions={fetchQuestions} />
-			<CardBox questions={qs} />
-		</div>
+		<Router>
+			<Switch>
+				<div className="App">
+					<Route exact path="/" component={WelcomePage} />
+					<Route exact path="/questions">
+						<SelectionPannel fetchQuestions={fetchQuestions} />
+						<CardBox questions={qs} />
+					</Route>
+				</div>
+			</Switch>
+		</Router>
 	);
 }
 
